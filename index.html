@@ -6,175 +6,459 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Infinity X</title>
   <meta name="description" content="Infinity X is an AOSP custom ROM that brings refined performance, stunning visuals and endless customization to your Android device." />
-        <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon/favicon-96x96.png">
-        <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon/favicon-192x192.png">
-        <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon/favicon-512x512.png">
-        <link rel="shortcut icon" href="/assets/favicon/favicon.ico">
-  
-  <!-- Critical above-the-fold CSS inlined to avoid FOUC while keeping full stylesheet async -->
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon/favicon-96x96.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon/favicon-192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon/favicon-512x512.png">
+  <link rel="shortcut icon" href="/assets/favicon/favicon.ico">
+
+  <!-- Tailwind CDN (for new ultra-pro design) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Google Sans"', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            infinity: {
+              500: '#22d3ee',
+              600: '#06b6d4',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Critical above-the-fold CSS (existing) -->
   <link rel="preload" href="assets/css/critical.css" as="style">
   <link rel="stylesheet" href="assets/css/critical.css">
-  
+
   <link rel="preload" as="font" type="font/woff2" href="assets/vendor/fonts/roboto-400.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="assets/vendor/fonts/google-sans-700.woff2" crossorigin fetchpriority="high">
-  
+
   <link rel="preload" as="style" href="assets/css/fa-minimal.css" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="assets/css/fa-minimal.css"></noscript>
-  
+
   <link rel="preload" as="style" href="assets/vendor/fonts/fonts.css" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="assets/vendor/fonts/fonts.css"></noscript>
-  
+
   <link rel="preload" as="style" href="assets/vendor/swiper/swiper-bundle.min.css" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="assets/vendor/swiper/swiper-bundle.min.css"></noscript>
+
   <link rel="preload" as="style" href="assets/css/main.css" onload="this.onload=null;this.rel='stylesheet'" fetchpriority="high">
   <noscript><link rel="stylesheet" href="assets/css/main.css"></noscript>
+
   <link rel="preload" as="image" href="assets/images/ss-1.webp"/>
+
+  <!-- Ultra Glass / Neon styling -->
+  <style>
+    body {
+      background: radial-gradient(circle at top left, #0f172a 0, #020617 45%, #020617 100%);
+      color: #e5e7eb;
+      font-family: "Google Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .glass-panel {
+      background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.65));
+      border-radius: 1.5rem;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      box-shadow:
+        0 25px 80px rgba(15, 23, 42, 0.95),
+        0 0 0 1px rgba(15, 23, 42, 0.9);
+      backdrop-filter: blur(26px);
+    }
+
+    .glass-card {
+      background: rgba(15, 23, 42, 0.82);
+      border-radius: 1.25rem;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      backdrop-filter: blur(22px);
+      box-shadow: 0 18px 55px rgba(15, 23, 42, 0.85);
+    }
+
+    .neon-ring {
+      box-shadow:
+        0 0 40px rgba(56, 189, 248, 0.45),
+        0 0 90px rgba(56, 189, 248, 0.35);
+    }
+
+    .orbit {
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.1), transparent 60%);
+      filter: blur(40px);
+      pointer-events: none;
+    }
+
+    .hero-gradient {
+      background: radial-gradient(circle at 0% 0%, rgba(59, 130, 246, 0.35) 0, transparent 50%),
+                  radial-gradient(circle at 100% 100%, rgba(56, 189, 248, 0.35) 0, transparent 55%);
+    }
+
+    @keyframes float-soft {
+      0% { transform: translateY(0px) translateX(0px); }
+      50% { transform: translateY(-12px) translateX(8px); }
+      100% { transform: translateY(0px) translateX(0px); }
+    }
+
+    .float-soft {
+      animation: float-soft 8s ease-in-out infinite;
+    }
+
+    .limitless-color-shift {
+      background: linear-gradient(120deg, #22d3ee, #a855f7, #6366f1, #22d3ee);
+      background-size: 260% 260%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: shift 12s ease infinite;
+    }
+
+    .heading-color-shift {
+      background: linear-gradient(120deg, #a855f7, #22c55e, #22d3ee, #a855f7);
+      background-size: 220% 220%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: shift 10s ease infinite;
+    }
+
+    @keyframes shift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Keep sparkles + droplets IDs for your JS, but make them subtle */
+    #sparkles, #droplets {
+      pointer-events: none;
+      position: absolute;
+      inset: 0;
+      opacity: 0.5;
+      mix-blend-mode: screen;
+    }
+  </style>
 </head>
 
-<body>
-    <!-- Shared Header Placeholder -->
-    <div id="header-placeholder"></div>
+<body class="min-h-screen antialiased overflow-x-hidden">
+  <!-- Shared Header Placeholder -->
+  <div id="header-placeholder"></div>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="sparkles-container" id="sparkles"></div>
-        <div class="droplets-container" id="droplets"></div>
+  <!-- Hero Section -->
+  <section class="relative hero hero-gradient pt-20 pb-24 lg:pt-24 lg:pb-32 overflow-hidden">
+    <!-- Decorative orbits / glow -->
+    <div class="absolute -top-40 -right-40 w-96 h-96 rounded-full orbit"></div>
+    <div class="absolute -bottom-40 -left-20 w-[28rem] h-[28rem] orbit"></div>
 
-        <div class="container">
-            <div class="hero-content">
-                <h1 id="hero-heading" style="contain:layout" fetchpriority="high">Experience <span class="limitless-color-shift">Limitless Possibilities</span> with Android Reimagined</h1>
-                <p>Project Infinity X is an AOSP custom ROM that brings refined performance, stunning visuals and endless customization to your Android device. Built on stability and designed for enthusiasts.</p>
-                <div class="hero-buttons">
-                    <a href="#download" class="btn btn-primary">
-                        <i class="fas fa-download" style="margin-right:8px;vertical-align:middle"></i>
-                        Download Now
-                    </a>
-                    <a href="#features" class="btn btn-secondary">
-                        <i class="fas fa-star" style="margin-right:8px;vertical-align:middle"></i>
-                        Explore Features
-                    </a>
-                </div>
+    <!-- Containers kept for your existing JS effects -->
+    <div class="sparkles-container" id="sparkles"></div>
+    <div class="droplets-container" id="droplets"></div>
+
+    <div class="container mx-auto px-4">
+      <div class="grid lg:grid-cols-2 gap-10 items-center">
+        <!-- Text content -->
+        <div class="relative z-10 space-y-7">
+          <span class="inline-flex items-center text-xs font-semibold tracking-[0.25em] uppercase text-sky-200/80 bg-white/5 px-3 py-1 rounded-full border border-sky-400/30 mb-2">
+            <i class="fas fa-infinity text-xs mr-2"></i> Project Infinity X
+          </span>
+
+          <h1 id="hero-heading" fetchpriority="high"
+              class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-tight">
+            Experience <span class="limitless-color-shift">Limitless Possibilities</span><br/>
+            with Android Reimagined
+          </h1>
+
+          <p class="text-slate-300/90 text-base sm:text-lg max-w-xl">
+            Infinity X is an AOSP custom ROM that fuses refined performance, stunning visuals, and endless customization —
+            engineered for power users, crafted for daily drivers.
+          </p>
+
+          <div class="flex flex-wrap gap-4 pt-2">
+            <a href="#download"
+               class="inline-flex items-center justify-center px-6 py-3 rounded-2xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold text-sm shadow-lg shadow-cyan-500/40 transition-transform duration-200 hover:-translate-y-0.5 neon-ring">
+              <i class="fas fa-download mr-2"></i>
+              Download Now
+            </a>
+            <a href="#features"
+               class="inline-flex items-center justify-center px-6 py-3 rounded-2xl border border-slate-600/60 bg-slate-900/40 hover:bg-slate-800/70 text-slate-100 text-sm font-medium transition-transform duration-200 hover:-translate-y-0.5">
+              <i class="fas fa-star mr-2 text-yellow-400"></i>
+              Explore Features
+            </a>
+          </div>
+
+          <div class="flex flex-wrap items-center gap-4 pt-4 text-xs text-slate-400">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              Stable, daily-driver ready
             </div>
+            <span class="hidden sm:inline-block w-px h-4 bg-slate-600"></span>
+            <div class="flex items-center gap-2">
+              <i class="fas fa-shield-alt text-sky-400"></i>
+              Strong Play Integrity (all green)
+            </div>
+          </div>
         </div>
-    </section>
 
-    <!-- Features Section -->
-    <section id="features" class="features">
-        <div class="container">
-            <div class="section-title">
-                <h2 class="heading-color-shift">Blazing Features</h2>
-                <p>Unlock the full potential of Android with our cutting-edge features designed for power users and enthusiasts.</p>
+        <!-- Visual / device preview -->
+        <div class="relative z-10 mt-6 lg:mt-0">
+          <div class="glass-panel float-soft p-5 sm:p-7 lg:p-8 max-w-md mx-auto">
+            <div class="relative overflow-hidden rounded-[2rem] border border-sky-500/40 neon-ring bg-gradient-to-b from-slate-900/90 via-slate-900/60 to-slate-900/90">
+              <div class="absolute inset-x-10 top-4 h-1 rounded-full bg-slate-300/50 opacity-60"></div>
+              <div class="aspect-[9/19.5] w-full bg-slate-900/80">
+                <!-- Swiper kept – your JS will still inject screenshots -->
+                <div class="h-full flex flex-col justify-between">
+                  <div class="p-4 flex items-center justify-between text-[0.75rem] text-slate-300/90">
+                    <span class="inline-flex items-center gap-2">
+                      <span class="w-2 h-2 rounded-full bg-emerald-400"></span> Infinity UI
+                    </span>
+                    <span class="uppercase tracking-[0.2em] text-slate-400/90">Android Custom ROM</span>
+                  </div>
+                  <div class="flex-1">
+                    <div class="swiper h-full">
+                      <div class="swiper-wrapper">
+                        <!-- Screenshots loaded dynamically in main.js -->
+                      </div>
+                      <div class="swiper-pagination !bottom-3"></div>
+                    </div>
+                  </div>
+                  <div class="p-3 flex items-center justify-between text-[0.7rem] text-slate-400/90 border-t border-slate-700/70">
+                    <span>Smooth. Fluid. Personal.</span>
+                    <span class="inline-flex items-center gap-1">
+                      <i class="fas fa-bolt text-amber-400 text-[0.65rem]"></i> Optimized
+                    </span>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-bolt"></i>
-                    </div>
-                    <h3>Refined Performance</h3>
-                    <p>Optimized SystemUI tweaks that aims to deliver better performance than your stock OEM.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-palette"></i>
-                    </div>
-                    <h3>Infinite Customization</h3>
-                    <p>Complete control over every aspect of your UI with our powerful theme engine and customization options.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Enhanced Security</h3>
-                    <p>Functional banking apps and passing Strong Play Integrity (all 3 checks green) with our rom's in-built keybox/bootloader spoofing.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-magic"></i>
-                    </div>
-                    <h3>Smart Features</h3>
-                    <p>Focused optimizations, adaptive battery, and intelligent memory management for a seamless experience.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-sync-alt"></i>
-                    </div>
-                    <h3>Regular Updates</h3>
-                    <p>Frequent OTA updates with new features, improvements, and the latest Android security patches.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-headset"></i>
-                    </div>
-                    <h3>Active Community</h3>
-                    <p>Join thousands of users in our vibrant community forums and Telegram groups for support and discussions.</p>
-                </div>
+
+            <div class="mt-4 grid grid-cols-3 gap-3 text-[0.7rem] text-slate-300">
+              <div class="glass-card px-3 py-2 flex flex-col gap-1">
+                <span class="text-[0.65rem] uppercase tracking-[0.15em] text-slate-400">Latency</span>
+                <span class="font-semibold text-emerald-400">Ultra-low</span>
+              </div>
+              <div class="glass-card px-3 py-2 flex flex-col gap-1">
+                <span class="text-[0.65rem] uppercase tracking-[0.15em] text-slate-400">Battery</span>
+                <span class="font-semibold text-sky-400">Adaptive tuned</span>
+              </div>
+              <div class="glass-card px-3 py-2 flex flex-col gap-1">
+                <span class="text-[0.65rem] uppercase tracking-[0.15em] text-slate-400">Security</span>
+                <span class="font-semibold text-rose-400">Bank-safe</span>
+              </div>
             </div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Screenshots Section -->
-    <section id="screenshots" class="screenshots">
-        <div class="container">
-            <div class="section-title">
-                <h2 class="heading-color-shift">Screenshots</h2>
-                <p>Experience the stunning visuals of Project Infinity X on your device</p>
+  <!-- Features Section -->
+  <section id="features" class="relative py-16 lg:py-20">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center mb-12">
+        <h2 class="heading-color-shift text-3xl sm:text-4xl font-bold mb-4">Blazing Features</h2>
+        <p class="text-slate-300/90 text-sm sm:text-base">
+          Unlock the full potential of Android with a ROM built for enthusiasts and tuned for everyday reliability.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="glass-card p-5 sm:p-6 hover:-translate-y-1 hover:border-cyan-400/50 transition-all duration-200">
+          <div class="flex items-center justify-between mb-4">
+            <div class="w-10 h-10 rounded-2xl bg-cyan-500/15 flex items-center justify-center">
+              <i class="fas fa-bolt text-cyan-400"></i>
             </div>
-            <div class="screenshots-slider">
-                <div class="swiper">
-                    <div class="swiper-wrapper">
-                        <!-- Screenshots will be loaded dynamically -->
-                    </div>
-                    <div class="swiper-pagination"></div>
-                </div>
-            </div>
-            <div class="swipe-hint">
-                <i class="fas fa-arrows-alt-h" style="margin-right:8px;vertical-align:middle"></i>
-                Swipe to view more screenshots
-            </div>
+            <span class="text-[0.7rem] text-emerald-400 uppercase tracking-[0.18em]">Optimized</span>
+          </div>
+          <h3 class="text-lg font-semibold mb-2">Refined Performance</h3>
+          <p class="text-sm text-slate-300/90">
+            SystemUI and framework optimizations that aim to outpace stock OEM performance while staying smooth and responsive.
+          </p>
         </div>
-    </section>
 
-    <!-- Download Section -->
-    <section id="download" class="download">
-        <div class="container">
-            <div class="section-title">
-                <h2 class="heading-color-shift">Download Now</h2>
-                <p>Get your hands on Project Infinity X to join the list of our pleased users, some of whose feedback you can see below...</p>
+        <div class="glass-card p-5 sm:p-6 hover:-translate-y-1 hover:border-fuchsia-400/50 transition-all duration-200">
+          <div class="flex items-center justify-between mb-4">
+            <div class="w-10 h-10 rounded-2xl bg-fuchsia-500/15 flex items-center justify-center">
+              <i class="fas fa-palette text-fuchsia-400"></i>
             </div>
-            <div class="download-content">
-                <div class="feedback-cards">
-                    <div class="feedback-card">
-                        <div class="rating">★★★★★</div>
-                        <div class="feedback-text">"Amazing ROM! The endless customizations gave my Pixel a fresh feel! Cheers to the developers."</div>
-                        <div class="feedback-author">- Sebastiana Carrington</div>
-                    </div>
-                    <div class="feedback-card">
-                        <div class="rating">★★★★★</div>
-                        <div class="feedback-text">"Best ROM I've ever used. Everything works perfectly, including banking apps. The UI is beautiful and responsive."</div>
-                        <div class="feedback-author">- Aditya Srivastava</div>
-                    </div>
-                    <div class="feedback-card">
-                        <div class="rating">★★★★★</div>
-                        <div class="feedback-text">" I like the blend of customizations, features and the maintained Pixel touch. Also regular updates and great community support!"</div>
-                        <div class="feedback-author">- Youssef Saleh</div>
-                    </div>
-                </div>
-                <div class="download-cta">
-                    <a href="https://projectinfinity-x.com/downloads" class="btn btn-primary">
-                        <i class="fas fa-download" style="margin-right:8px;vertical-align:middle"></i>
-                        Download ROM
-                    </a>
-                </div>
-            </div>
+            <span class="text-[0.7rem] text-fuchsia-300 uppercase tracking-[0.18em]">Personal</span>
+          </div>
+          <h3 class="text-lg font-semibold mb-2">Infinite Customization</h3>
+          <p class="text-sm text-slate-300/90">
+            Control every layer of your UI with a powerful theme engine, icon packs, status bar tweaks, lockscreen looks, and more.
+          </p>
         </div>
-    </section>
 
-    <!-- Footer -->
-    <footer id="footer-placeholder"></footer>
+        <div class="glass-card p-5 sm:p-6 hover:-translate-y-1 hover:border-emerald-400/50 transition-all duration-200">
+          <div class="flex items-center justify-between mb-4">
+            <div class="w-10 h-10 rounded-2xl bg-emerald-500/15 flex items-center justify-center">
+              <i class="fas fa-shield-alt text-emerald-400"></i>
+            </div>
+            <span class="text-[0.7rem] text-emerald-300 uppercase tracking-[0.18em]">Secure</span>
+          </div>
+          <h3 class="text-lg font-semibold mb-2">Enhanced Security</h3>
+          <p class="text-sm text-slate-300/90">
+            Strong Play Integrity with in-built keybox / bootloader spoofing ensures banking and DRM apps stay functional.
+          </p>
+        </div>
 
-    <script src="assets/js/main.js" defer></script>
-    <script src="/assets/js/templating.js" defer></script>
+        <div class="glass-card p-5 sm:p-6 hover:-translate-y-1 hover:border-amber-400/50 transition-all duration-200">
+          <div class="flex items-center justify-between mb-4">
+            <div class="w-10 h-10 rounded-2xl bg-amber-500/15 flex items-center justify-center">
+              <i class="fas fa-magic text-amber-300"></i>
+            </div>
+            <span class="text-[0.7rem] text-amber-200 uppercase tracking-[0.18em]">Smart</span>
+          </div>
+          <h3 class="text-lg font-semibold mb-2">Smart Features</h3>
+          <p class="text-sm text-slate-300/90">
+            Focused optimizations, adaptive battery, and intelligent memory management for a seamless, lag-free experience.
+          </p>
+        </div>
+
+        <div class="glass-card p-5 sm:p-6 hover:-translate-y-1 hover:border-sky-400/50 transition-all duration-200">
+          <div class="flex items-center justify-between mb-4">
+            <div class="w-10 h-10 rounded-2xl bg-sky-500/15 flex items-center justify-center">
+              <i class="fas fa-sync-alt text-sky-300"></i>
+            </div>
+            <span class="text-[0.7rem] text-sky-200 uppercase tracking-[0.18em]">Updated</span>
+          </div>
+          <h3 class="text-lg font-semibold mb-2">Regular Updates</h3>
+          <p class="text-sm text-slate-300/90">
+            Frequent OTA builds with fresh features, refinements, and up-to-date Android security patches.
+          </p>
+        </div>
+
+        <div class="glass-card p-5 sm:p-6 hover:-translate-y-1 hover:border-indigo-400/50 transition-all duration-200">
+          <div class="flex items-center justify-between mb-4">
+            <div class="w-10 h-10 rounded-2xl bg-indigo-500/15 flex items-center justify-center">
+              <i class="fas fa-headset text-indigo-300"></i>
+            </div>
+            <span class="text-[0.7rem] text-indigo-200 uppercase tracking-[0.18em]">Community</span>
+          </div>
+          <h3 class="text-lg font-semibold mb-2">Active Community</h3>
+          <p class="text-sm text-slate-300/90">
+            Join a vibrant community on forums and Telegram for help, feedback, themes, and device-specific guidance.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Screenshots Section -->
+  <section id="screenshots" class="relative py-16 lg:py-20">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center mb-10">
+        <h2 class="heading-color-shift text-3xl sm:text-4xl font-bold mb-4">Screenshots</h2>
+        <p class="text-slate-300/90 text-sm sm:text-base">
+          Take a closer look at the Infinity X experience running live on real devices.
+        </p>
+      </div>
+
+      <div class="glass-panel p-6 sm:p-8">
+        <div class="screenshots-slider">
+          <div class="swiper">
+            <div class="swiper-wrapper">
+              <!-- Screenshots will be loaded dynamically -->
+            </div>
+            <div class="swiper-pagination mt-4"></div>
+          </div>
+        </div>
+        <div class="swipe-hint mt-5 flex items-center justify-center text-sm text-slate-300/80">
+          <i class="fas fa-arrows-alt-h mr-2"></i>
+          Swipe or drag to explore more screens
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Download Section -->
+  <section id="download" class="relative py-16 lg:py-20">
+    <div class="container mx-auto px-4">
+      <div class="max-w-3xl mx-auto text-center mb-12">
+        <h2 class="heading-color-shift text-3xl sm:text-4xl font-bold mb-4">Download Now</h2>
+        <p class="text-slate-300/90 text-sm sm:text-base">
+          Join users who have already switched to Infinity X and never looked back.
+        </p>
+      </div>
+
+      <div class="grid lg:grid-cols-[minmax(0,2fr),minmax(0,1fr)] gap-8 items-start">
+        <!-- Feedback / testimonials -->
+        <div class="space-y-4">
+          <div class="glass-card p-5 sm:p-6">
+            <div class="flex items-center justify-between mb-2">
+              <div class="text-amber-300 text-lg" aria-hidden="true">★★★★★</div>
+              <span class="text-[0.75rem] text-slate-400 uppercase tracking-[0.15em]">Pixel user</span>
+            </div>
+            <p class="text-sm text-slate-200 mb-2">
+              "Amazing ROM! The endless customizations gave my Pixel a fresh feel! Cheers to the developers."
+            </p>
+            <div class="text-xs text-slate-400">- Sebastiana Carrington</div>
+          </div>
+
+          <div class="glass-card p-5 sm:p-6">
+            <div class="flex items-center justify-between mb-2">
+              <div class="text-amber-300 text-lg" aria-hidden="true">★★★★★</div>
+              <span class="text-[0.75rem] text-slate-400 uppercase tracking-[0.15em]">Daily driver</span>
+            </div>
+            <p class="text-sm text-slate-200 mb-2">
+              "Best ROM I've ever used. Everything works perfectly, including banking apps. The UI is beautiful and responsive."
+            </p>
+            <div class="text-xs text-slate-400">- Aditya Srivastava</div>
+          </div>
+
+          <div class="glass-card p-5 sm:p-6">
+            <div class="flex items-center justify-between mb-2">
+              <div class="text-amber-300 text-lg" aria-hidden="true">★★★★★</div>
+              <span class="text-[0.75rem] text-slate-400 uppercase tracking-[0.15em]">Power user</span>
+            </div>
+            <p class="text-sm text-slate-200 mb-2">
+              "I like the blend of customizations, features and the maintained Pixel touch. Also regular updates and great community support!"
+            </p>
+            <div class="text-xs text-slate-400">- Youssef Saleh</div>
+          </div>
+        </div>
+
+        <!-- Call to action -->
+        <div class="glass-panel p-6 sm:p-7 flex flex-col justify-between gap-5">
+          <div class="space-y-3">
+            <h3 class="text-xl font-semibold text-slate-50">Ready to flash Infinity X?</h3>
+            <p class="text-sm text-slate-300/90">
+              Download the latest build for your device, follow the install guide, and enjoy a cleaner, faster, and more personal Android experience.
+            </p>
+            <ul class="text-xs text-slate-400 space-y-1">
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                Verified builds for supported devices
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>
+                OTA updates directly from the ROM
+              </li>
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-fuchsia-400"></span>
+                Active support & changelogs
+              </li>
+            </ul>
+          </div>
+
+          <a href="https://projectinfinity-x.com/downloads"
+             class="inline-flex items-center justify-center w-full px-6 py-3 rounded-2xl bg-gradient-to-r from-cyan-500 via-sky-500 to-fuchsia-500 text-slate-950 font-semibold text-sm shadow-xl shadow-cyan-500/30 hover:shadow-fuchsia-500/30 transition-transform duration-200 hover:-translate-y-0.5">
+            <i class="fas fa-download mr-2"></i>
+            Download ROM
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer id="footer-placeholder"></footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/main.js" defer></script>
+  <script src="/assets/js/templating.js" defer></script>
 </body>
 
 </html>
