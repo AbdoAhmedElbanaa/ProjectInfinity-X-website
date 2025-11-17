@@ -1,464 +1,450 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" data-theme="night">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Infinity X</title>
+  <title>Infinity X – Android, Reimagined</title>
   <meta name="description" content="Infinity X is an AOSP custom ROM that brings refined performance, stunning visuals and endless customization to your Android device." />
 
-  <!-- Favicons -->
+  <!-- Favicon -->
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon/favicon-96x96.png">
   <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon/favicon-192x192.png">
   <link rel="icon" type="image/png" sizes="512x512" href="/assets/favicon/favicon-512x512.png">
   <link rel="shortcut icon" href="/assets/favicon/favicon.ico">
 
-  <!-- Tailwind CDN (for new ultra-pro design) -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['"Google Sans"', 'system-ui', 'sans-serif'],
-          },
-          colors: {
-            infinity: {
-              500: '#22d3ee',
-              600: '#06b6d4',
-            }
-          }
-        }
-      }
-    }
-  </script>
+  <!-- DaisyUI Standalone Bundle (as requested) -->
+  <link href="https://cdn.jsdelivr.net/combine/npm/daisyui@5/base/rootscrollgutter.css,npm/daisyui@5/base/scrollbar.css,npm/daisyui@5/base/rootcolor.css,npm/daisyui@5/base/rootscrolllock.css,npm/daisyui@5/base/reset.css,npm/daisyui@5/base/svg.css,npm/daisyui@5/base/properties.css,npm/daisyui@5/components/input.css,npm/daisyui@5/components/timeline.css,npm/daisyui@5/components/swap.css,npm/daisyui@5/components/divider.css,npm/daisyui@5/components/rating.css,npm/daisyui@5/components/steps.css,npm/daisyui@5/components/hovergallery.css,npm/daisyui@5/components/loading.css,npm/daisyui@5/components/diff.css,npm/daisyui@5/components/textrotate.css,npm/daisyui@5/components/filter.css,npm/daisyui@5/components/badge.css,npm/daisyui@5/components/table.css,npm/daisyui@5/components/radio.css,npm/daisyui@5/components/indicator.css,npm/daisyui@5/components/collapse.css,npm/daisyui@5/components/link.css,npm/daisyui@5/components/dropdown.css,npm/daisyui@5/components/calendar.css,npm/daisyui@5/components/dock.css,npm/daisyui@5/components/mask.css,npm/daisyui@5/components/mockup.css,npm/daisyui@5/components/chat.css,npm/daisyui@5/components/navbar.css,npm/daisyui@5/components/fab.css,npm/daisyui@5/components/list.css,npm/daisyui@5/components/carousel.css,npm/daisyui@5/components/drawer.css,npm/daisyui@5/components/kbd.css,npm/daisyui@5/components/avatar.css,npm/daisyui@5/components/alert.css,npm/daisyui@5/components/countdown.css,npm/daisyui@5/components/hero.css,npm/daisyui@5/components/menu.css,npm/daisyui@5/components/status.css,npm/daisyui@5/components/toggle.css,npm/daisyui@5/components/range.css,npm/daisyui@5/components/validator.css,npm/daisyui@5/components/fieldset.css,npm/daisyui@5/components/label.css,npm/daisyui@5/components/skeleton.css,npm/daisyui@5/components/hover3d.css,npm/daisyui@5/components/stack.css,npm/daisyui@5/components/footer.css,npm/daisyui@5/components/breadcrumbs.css,npm/daisyui@5/components/toast.css,npm/daisyui@5/components/stat.css,npm/daisyui@5/components/radialprogress.css,npm/daisyui@5/components/tab.css,npm/daisyui@5/components/checkbox.css,npm/daisyui@5/components/select.css,npm/daisyui@5/components/fileinput.css,npm/daisyui@5/components/card.css,npm/daisyui@5/components/textarea.css,npm/daisyui@5/components/button.css,npm/daisyui@5/components/modal.css,npm/daisyui@5/components/tooltip.css,npm/daisyui@5/components/progress.css,npm/daisyui@5/utilities/typography.css,npm/daisyui@5/utilities/radius.css,npm/daisyui@5/utilities/glass.css,npm/daisyui@5/utilities/join.css,npm/daisyui@5/colors/properties-extended.css,npm/daisyui@5/colors/responsive.css,npm/daisyui@5/colors/states-extended.css,npm/daisyui@5/colors/states.css,npm/daisyui@5/colors/properties.css,npm/daisyui@5/colors/responsive-extended.css,npm/daisyui@5/theme/retro.css,npm/daisyui@5/theme/light.css,npm/daisyui@5/theme/synthwave.css,npm/daisyui@5/theme/coffee.css,npm/daisyui@5/theme/valentine.css,npm/daisyui@5/theme/halloween.css,npm/daisyui@5/theme/business.css,npm/daisyui@5/theme/pastel.css,npm/daisyui@5/theme/black.css,npm/daisyui@5/theme/wireframe.css,npm/daisyui@5/theme/cupcake.css,npm/daisyui@5/theme/aqua.css,npm/daisyui@5/theme/abyss.css,npm/daisyui@5/theme/luxury.css,npm/daisyui@5/theme/bumblebee.css,npm/daisyui@5/theme/dim.css,npm/daisyui@5/theme/winter.css,npm/daisyui@5/theme/corporate.css,npm/daisyui@5/theme/autumn.css,npm/daisyui@5/theme/dark.css,npm/daisyui@5/theme/fantasy.css,npm/daisyui@5/theme/forest.css,npm/daisyui@5/theme/lofi.css,npm/daisyui@5/theme/sunset.css,npm/daisyui@5/theme/nord.css,npm/daisyui@5/theme/night.css,npm/daisyui@5/theme/caramellatte.css,npm/daisyui@5/theme/dracula.css,npm/daisyui@5/theme/garden.css,npm/daisyui@5/theme/cmyk.css,npm/daisyui@5/theme/silk.css,npm/daisyui@5/theme/acid.css,npm/daisyui@5/theme/cyberpunk.css,npm/daisyui@5/theme/lemonade.css,npm/daisyui@5/theme/emerald.css" rel="stylesheet" type="text/css" />
 
-  <!-- Critical above-the-fold CSS (existing) -->
-  <link rel="preload" href="assets/css/critical.css" as="style">
-  <link rel="stylesheet" href="assets/css/critical.css">
-
-  <link rel="preload" as="font" type="font/woff2" href="assets/vendor/fonts/roboto-400.woff2" crossorigin>
-  <link rel="preload" as="font" type="font/woff2" href="assets/vendor/fonts/google-sans-700.woff2" crossorigin fetchpriority="high">
-
-  <link rel="preload" as="style" href="assets/css/fa-minimal.css" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="assets/css/fa-minimal.css"></noscript>
-
-  <link rel="preload" as="style" href="assets/vendor/fonts/fonts.css" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="assets/vendor/fonts/fonts.css"></noscript>
-
-  <link rel="preload" as="style" href="assets/vendor/swiper/swiper-bundle.min.css" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="assets/vendor/swiper/swiper-bundle.min.css"></noscript>
-
-  <link rel="preload" as="style" href="assets/css/main.css" onload="this.onload=null;this.rel='stylesheet'" fetchpriority="high">
-  <noscript><link rel="stylesheet" href="assets/css/main.css"></noscript>
-
-  <link rel="preload" as="image" href="assets/images/ss-1.webp"/>
-
-  <!-- Ultra Glass / Neon styling -->
+  <!-- Optional: small custom tweaks -->
   <style>
     body {
-      background: radial-gradient(circle at top left, #0f172a 0, #020617 45%, #020617 100%);
-      color: #e5e7eb;
-      font-family: "Google Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      min-height: 100vh;
+      background: radial-gradient(circle at top left, rgba(56, 189, 248, 0.18), transparent 55%),
+                  radial-gradient(circle at bottom right, rgba(192, 132, 252, 0.18), transparent 55%),
+                  radial-gradient(circle at top right, rgba(248, 113, 113, 0.12), transparent 55%);
     }
-
-    .glass-panel {
-      background: radial-gradient(circle at top left, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.65));
-      border-radius: 1.5rem;
-      border: 1px solid rgba(148, 163, 184, 0.4);
+    .glass-ring {
       box-shadow:
-        0 25px 80px rgba(15, 23, 42, 0.95),
-        0 0 0 1px rgba(15, 23, 42, 0.9);
-      backdrop-filter: blur(26px);
-    }
-
-    .glass-card {
-      background: rgba(15, 23, 42, 0.82);
-      border-radius: 1.25rem;
-      border: 1px solid rgba(148, 163, 184, 0.35);
-      backdrop-filter: blur(22px);
-      box-shadow: 0 18px 55px rgba(15, 23, 42, 0.85);
-    }
-
-    .neon-ring {
-      box-shadow:
-        0 0 40px rgba(56, 189, 248, 0.45),
-        0 0 90px rgba(56, 189, 248, 0.35);
-    }
-
-    .orbit {
-      background: radial-gradient(circle, rgba(56, 189, 248, 0.1), transparent 60%);
-      filter: blur(40px);
-      pointer-events: none;
-    }
-
-    .hero-gradient {
-      background: radial-gradient(circle at 0% 0%, rgba(59, 130, 246, 0.35) 0, transparent 50%),
-                  radial-gradient(circle at 100% 100%, rgba(56, 189, 248, 0.35) 0, transparent 55%);
-    }
-
-    @keyframes float-soft {
-      0% { transform: translateY(0px) translateX(0px); }
-      50% { transform: translateY(-12px) translateX(8px); }
-      100% { transform: translateY(0px) translateX(0px); }
-    }
-
-    .float-soft {
-      animation: float-soft 8s ease-in-out infinite;
-    }
-
-    .limitless-color-shift {
-      background: linear-gradient(120deg, #22d3ee, #a855f7, #6366f1, #22d3ee);
-      background-size: 260% 260%;
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      animation: shift 12s ease infinite;
-    }
-
-    .heading-color-shift {
-      background: linear-gradient(120deg, #a855f7, #22c55e, #22d3ee, #a855f7);
-      background-size: 220% 220%;
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      animation: shift 10s ease infinite;
-    }
-
-    @keyframes shift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    /* Keep sparkles + droplets IDs for your JS, but make them subtle */
-    #sparkles, #droplets {
-      pointer-events: none;
-      position: absolute;
-      inset: 0;
-      opacity: 0.5;
-      mix-blend-mode: screen;
+        0 0 0 1px rgba(255, 255, 255, 0.14),
+        0 22px 80px rgba(0, 0, 0, 0.55);
     }
   </style>
 </head>
 
-<body class="min-h-screen antialiased overflow-x-hidden">
-  <!-- Shared Header Placeholder -->
+<body class="text-base-content/90">
+  <!-- Shared Header Placeholder (from templating.js if you useه) -->
   <div id="header-placeholder"></div>
 
-  <!-- Hero Section -->
-  <section class="relative hero hero-gradient pt-20 pb-24 lg:pt-24 lg:pb-32 overflow-hidden">
-    <!-- Decorative orbits / glow -->
-    <div class="absolute -top-40 -right-40 w-96 h-96 rounded-full orbit"></div>
-    <div class="absolute -bottom-40 -left-20 w-[28rem] h-[28rem] orbit"></div>
+  <!-- ================= HERO ================= -->
+  <section id="top" class="relative hero min-h-[80vh] overflow-hidden">
+    <!-- glowing blobs -->
+    <div class="pointer-events-none absolute inset-0 opacity-60">
+      <div class="absolute -top-32 -left-10 h-72 w-72 rounded-full bg-cyan-500/20 blur-3xl"></div>
+      <div class="absolute -bottom-28 -right-8 h-80 w-80 rounded-full bg-fuchsia-500/20 blur-3xl"></div>
+    </div>
 
-    <!-- Containers kept for your existing JS effects -->
-    <div class="sparkles-container" id="sparkles"></div>
-    <div class="droplets-container" id="droplets"></div>
+    <div class="hero-content flex-col lg:flex-row-reverse gap-12 z-10">
+      <!-- Right: Glass stack / preview -->
+      <div class="w-full max-w-md">
+        <div class="stack">
+          <div class="card glass bg-base-100/10 glass-ring backdrop-blur-2xl border border-base-100/30 shadow-2xl">
+            <div class="card-body gap-4">
+              <div class="flex items-center justify-between">
+                <span class="badge badge-outline badge-sm">Android Custom ROM</span>
+                <span class="badge badge-success badge-sm gap-1">
+                  <span class="w-2 h-2 rounded-full bg-success"></span>
+                  Stable
+                </span>
+              </div>
 
-    <div class="container mx-auto px-4">
-      <div class="grid lg:grid-cols-2 gap-10 items-center">
-        <!-- Text content -->
-        <div class="relative z-10 space-y-7">
-          <span class="inline-flex items-center text-xs font-semibold tracking-[0.25em] uppercase text-sky-200/80 bg-white/5 px-3 py-1 rounded-full border border-sky-400/30 mb-2">
-            <i class="fas fa-infinity text-xs mr-2"></i> Project Infinity X
-          </span>
+              <h2 class="card-title text-lg">
+                Infinity X · <span class="text-primary">AOSP</span>
+              </h2>
 
-          <h1 id="hero-heading" fetchpriority="high"
-              class="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-tight">
-            Experience <span class="limitless-color-shift">Limitless Possibilities</span><br/>
-            with Android Reimagined
-          </h1>
-
-          <p class="text-slate-300/90 text-base sm:text-lg max-w-xl">
-            Infinity X is an AOSP custom ROM that fuses refined performance, stunning visuals, and endless customization —
-            engineered for power users, crafted for daily drivers.
-          </p>
-
-          <div class="flex flex-wrap gap-4 pt-2">
-            <a href="#download"
-               class="inline-flex items-center justify-center px-6 py-3 rounded-2xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold text-sm shadow-lg shadow-cyan-500/40 transition-transform duration-200 hover:-translate-y-0.5 neon-ring">
-              <i class="fas fa-download mr-2"></i>
-              Download Now
-            </a>
-            <a href="#features"
-               class="inline-flex items-center justify-center px-6 py-3 rounded-2xl border border-slate-600/60 bg-slate-900/40 hover:bg-slate-800/70 text-slate-100 text-sm font-medium transition-transform duration-200 hover:-translate-y-0.5">
-              <i class="fas fa-star mr-2 text-yellow-400"></i>
-              Explore Features
-            </a>
-          </div>
-
-          <div class="flex flex-wrap items-center gap-4 pt-4 text-xs text-slate-400">
-            <div class="flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-              Stable, daily-driver ready
-            </div>
-            <span class="hidden sm:inline-block w-px h-4 bg-slate-600"></span>
-            <div class="flex items-center gap-2">
-              <i class="fas fa-shield-alt text-sky-400"></i>
-              Strong Play Integrity (all green)
-            </div>
-          </div>
-        </div>
-
-        <!-- Visual / device preview -->
-        <div class="relative z-10 mt-6 lg:mt-0">
-          <div class="glass-panel float-soft p-5 sm:p-7 lg:p-8 max-w-md mx-auto">
-            <div class="relative overflow-hidden rounded-[2rem] border border-sky-500/40 neon-ring bg-gradient-to-b from-slate-900/90 via-slate-900/60 to-slate-900/90">
-              <div class="absolute inset-x-10 top-4 h-1 rounded-full bg-slate-300/50 opacity-60"></div>
-              <div class="aspect-[9/19.5] w-full bg-slate-900/80">
-                <!-- Swiper kept – your JS will still inject screenshots -->
-                <div class="h-full flex flex-col justify-between">
-                  <div class="p-4 flex items-center justify-between text-[0.75rem] text-slate-300/90">
-                    <span class="inline-flex items-center gap-2">
-                      <span class="w-2 h-2 rounded-full bg-emerald-400"></span> Infinity UI
-                    </span>
-                    <span class="uppercase tracking-[0.2em] text-slate-400/90">Android Custom ROM</span>
-                  </div>
-                  <div class="flex-1">
-                    <div class="swiper h-full">
-                      <div class="swiper-wrapper">
-                        <!-- Screenshots loaded dynamically in main.js -->
-                      </div>
-                      <div class="swiper-pagination !bottom-3"></div>
-                    </div>
-                  </div>
-                  <div class="p-3 flex items-center justify-between text-[0.7rem] text-slate-400/90 border-t border-slate-700/70">
-                    <span>Smooth. Fluid. Personal.</span>
-                    <span class="inline-flex items-center gap-1">
-                      <i class="fas fa-bolt text-amber-400 text-[0.65rem]"></i> Optimized
-                    </span>
+              <div class="flex items-center gap-3 text-sm opacity-80">
+                <div class="avatar placeholder">
+                  <div class="w-9 rounded-full bg-gradient-to-br from-primary/70 to-secondary/70 text-neutral-content">
+                    <span>PX</span>
                   </div>
                 </div>
+                <div>
+                  <p class="font-medium">Pixel-like experience</p>
+                  <p class="text-xs">Clean, fast, deeply customizable.</p>
+                </div>
+              </div>
+
+              <div class="divider my-2"></div>
+
+              <div class="grid grid-cols-3 gap-3 text-xs">
+                <div class="stat bg-base-100/10 rounded-2xl border border-base-100/20 p-3">
+                  <div class="stat-title text-[0.7rem] opacity-70">Performance</div>
+                  <div class="stat-value text-sm">+35%</div>
+                  <div class="stat-desc text-[0.68rem]">vs stock UI</div>
+                </div>
+                <div class="stat bg-base-100/10 rounded-2xl border border-base-100/20 p-3">
+                  <div class="stat-title text-[0.7rem] opacity-70">Battery</div>
+                  <div class="stat-value text-sm">Smart</div>
+                  <div class="stat-desc text-[0.68rem]">Adaptive tuning</div>
+                </div>
+                <div class="stat bg-base-100/10 rounded-2xl border border-base-100/20 p-3">
+                  <div class="stat-title text-[0.7rem] opacity-70">Security</div>
+                  <div class="stat-value text-sm">Strong</div>
+                  <div class="stat-desc text-[0.68rem]">Play Integrity</div>
+                </div>
+              </div>
+
+              <div class="mt-2 flex items-center justify-between text-xs">
+                <span class="flex items-center gap-2">
+                  <span class="loading loading-ring loading-xs"></span>
+                  OTA ready
+                </span>
+                <span class="opacity-70">Updated monthly</span>
               </div>
             </div>
+          </div>
 
-            <div class="mt-4 grid grid-cols-3 gap-3 text-[0.7rem] text-slate-300">
-              <div class="glass-card px-3 py-2 flex flex-col gap-1">
-                <span class="text-[0.65rem] uppercase tracking-[0.15em] text-slate-400">Latency</span>
-                <span class="font-semibold text-emerald-400">Ultra-low</span>
+          <div class="card glass bg-base-100/5 border border-base-100/10 shadow-xl translate-y-4 -translate-x-6">
+            <div class="card-body py-4 px-5 text-xs gap-2">
+              <p class="font-medium flex items-center gap-2">
+                <span class="badge badge-xs badge-info badge-outline"></span>
+                Live stats
+              </p>
+              <div class="flex justify-between">
+                <span class="opacity-70">Devices</span>
+                <span>20+ maintained</span>
               </div>
-              <div class="glass-card px-3 py-2 flex flex-col gap-1">
-                <span class="text-[0.65rem] uppercase tracking-[0.15em] text-slate-400">Battery</span>
-                <span class="font-semibold text-sky-400">Adaptive tuned</span>
-              </div>
-              <div class="glass-card px-3 py-2 flex flex-col gap-1">
-                <span class="text-[0.65rem] uppercase tracking-[0.15em] text-slate-400">Security</span>
-                <span class="font-semibold text-rose-400">Bank-safe</span>
+              <div class="flex justify-between">
+                <span class="opacity-70">Community</span>
+                <span>5K+ users</span>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- Features Section -->
-  <section id="features" class="relative py-16 lg:py-20">
-    <div class="container mx-auto px-4">
-      <div class="max-w-3xl mx-auto text-center mb-12">
-        <h2 class="heading-color-shift text-3xl sm:text-4xl font-bold mb-4">Blazing Features</h2>
-        <p class="text-slate-300/90 text-sm sm:text-base">
-          Unlock the full potential of Android with a ROM built for enthusiasts and tuned for everyday reliability.
+      <!-- Left: Text & CTAs -->
+      <div class="w-full max-w-2xl">
+        <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-base-100/10 px-3 py-1 text-xs backdrop-blur">
+          <span class="badge badge-xs badge-primary"></span>
+          <span>Project Infinity X · Android reimagined for power users</span>
+        </div>
+
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
+          Experience
+          <span class="bg-gradient-to-r from-cyan-400 via-sky-300 to-fuchsia-400 bg-clip-text text-transparent">
+            Limitless Possibilities
+          </span>
+          on your Android.
+        </h1>
+
+        <p class="mt-4 text-sm md:text-base opacity-80 max-w-xl">
+          Infinity X is an AOSP custom ROM crafted for enthusiasts who want
+          refined performance, stunning visuals and endless customization without
+          compromising stability or banking compatibility.
         </p>
-      </div>
 
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="glass-card p-5 sm:p-6 hover:-translate-y-1 hover:border-cyan-400/50 transition-all duration-200">
-          <div class="flex items-center justify-between mb-4">
-            <div class="w-10 h-10 rounded-2xl bg-cyan-500/15 flex items-center justify-center">
-              <i class="fas fa-bolt text-cyan-400"></i>
-            </div>
-            <span class="text-[0.7rem] text-emerald-400 uppercase tracking-[0.18em]">Optimized</span>
-          </div>
-          <h3 class="text-lg font-semibold mb-2">Refined Performance</h3>
-          <p class="text-sm text-slate-300/90">
-            SystemUI and framework optimizations that aim to outpace stock OEM performance while staying smooth and responsive.
-          </p>
-        </div>
-
-        <div class="glass-card p-5 sm:p-6 hover:-translate-y-1 hover:border-fuchsia-400/50 transition-all duration-200">
-          <div class="flex items-center justify-between mb-4">
-            <div class="w-10 h-10 rounded-2xl bg-fuchsia-500/15 flex items-center justify-center">
-              <i class="fas fa-palette text-fuchsia-400"></i>
-            </div>
-            <span class="text-[0.7rem] text-fuchsia-300 uppercase tracking-[0.18em]">Personal</span>
-          </div>
-          <h3 class="text-lg font-semibold mb-2">Infinite Customization</h3>
-          <p class="text-sm text-slate-300/90">
-            Control every layer of your UI with a powerful theme engine, icon packs, status bar tweaks, lockscreen looks, and more.
-          </p>
-        </div>
-
-        <div class="glass-card p-5 sm:p-6 hover:-translate-y-1 hover:border-emerald-400/50 transition-all duration-200">
-          <div class="flex items-center justify-between mb-4">
-            <div class="w-10 h-10 rounded-2xl bg-emerald-500/15 flex items-center justify-center">
-              <i class="fas fa-shield-alt text-emerald-400"></i>
-            </div>
-            <span class="text-[0.7rem] text-emerald-300 uppercase tracking-[0.18em]">Secure</span>
-          </div>
-          <h3 class="text-lg font-semibold mb-2">Enhanced Security</h3>
-          <p class="text-sm text-slate-300/90">
-            Strong Play Integrity with in-built keybox / bootloader spoofing ensures banking and DRM apps stay functional.
-          </p>
-        </div>
-
-        <div class="glass-card p-5 sm:p-6 hover:-translate-y-1 hover:border-amber-400/50 transition-all duration-200">
-          <div class="flex items-center justify-between mb-4">
-            <div class="w-10 h-10 rounded-2xl bg-amber-500/15 flex items-center justify-center">
-              <i class="fas fa-magic text-amber-300"></i>
-            </div>
-            <span class="text-[0.7rem] text-amber-200 uppercase tracking-[0.18em]">Smart</span>
-          </div>
-          <h3 class="text-lg font-semibold mb-2">Smart Features</h3>
-          <p class="text-sm text-slate-300/90">
-            Focused optimizations, adaptive battery, and intelligent memory management for a seamless, lag-free experience.
-          </p>
-        </div>
-
-        <div class="glass-card p-5 sm:p-6 hover:-translate-y-1 hover:border-sky-400/50 transition-all duration-200">
-          <div class="flex items-center justify-between mb-4">
-            <div class="w-10 h-10 rounded-2xl bg-sky-500/15 flex items-center justify-center">
-              <i class="fas fa-sync-alt text-sky-300"></i>
-            </div>
-            <span class="text-[0.7rem] text-sky-200 uppercase tracking-[0.18em]">Updated</span>
-          </div>
-          <h3 class="text-lg font-semibold mb-2">Regular Updates</h3>
-          <p class="text-sm text-slate-300/90">
-            Frequent OTA builds with fresh features, refinements, and up-to-date Android security patches.
-          </p>
-        </div>
-
-        <div class="glass-card p-5 sm:p-6 hover:-translate-y-1 hover:border-indigo-400/50 transition-all duration-200">
-          <div class="flex items-center justify-between mb-4">
-            <div class="w-10 h-10 rounded-2xl bg-indigo-500/15 flex items-center justify-center">
-              <i class="fas fa-headset text-indigo-300"></i>
-            </div>
-            <span class="text-[0.7rem] text-indigo-200 uppercase tracking-[0.18em]">Community</span>
-          </div>
-          <h3 class="text-lg font-semibold mb-2">Active Community</h3>
-          <p class="text-sm text-slate-300/90">
-            Join a vibrant community on forums and Telegram for help, feedback, themes, and device-specific guidance.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Screenshots Section -->
-  <section id="screenshots" class="relative py-16 lg:py-20">
-    <div class="container mx-auto px-4">
-      <div class="max-w-3xl mx-auto text-center mb-10">
-        <h2 class="heading-color-shift text-3xl sm:text-4xl font-bold mb-4">Screenshots</h2>
-        <p class="text-slate-300/90 text-sm sm:text-base">
-          Take a closer look at the Infinity X experience running live on real devices.
-        </p>
-      </div>
-
-      <div class="glass-panel p-6 sm:p-8">
-        <div class="screenshots-slider">
-          <div class="swiper">
-            <div class="swiper-wrapper">
-              <!-- Screenshots will be loaded dynamically -->
-            </div>
-            <div class="swiper-pagination mt-4"></div>
-          </div>
-        </div>
-        <div class="swipe-hint mt-5 flex items-center justify-center text-sm text-slate-300/80">
-          <i class="fas fa-arrows-alt-h mr-2"></i>
-          Swipe or drag to explore more screens
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Download Section -->
-  <section id="download" class="relative py-16 lg:py-20">
-    <div class="container mx-auto px-4">
-      <div class="max-w-3xl mx-auto text-center mb-12">
-        <h2 class="heading-color-shift text-3xl sm:text-4xl font-bold mb-4">Download Now</h2>
-        <p class="text-slate-300/90 text-sm sm:text-base">
-          Join users who have already switched to Infinity X and never looked back.
-        </p>
-      </div>
-
-      <div class="grid lg:grid-cols-[minmax(0,2fr),minmax(0,1fr)] gap-8 items-start">
-        <!-- Feedback / testimonials -->
-        <div class="space-y-4">
-          <div class="glass-card p-5 sm:p-6">
-            <div class="flex items-center justify-between mb-2">
-              <div class="text-amber-300 text-lg" aria-hidden="true">★★★★★</div>
-              <span class="text-[0.75rem] text-slate-400 uppercase tracking-[0.15em]">Pixel user</span>
-            </div>
-            <p class="text-sm text-slate-200 mb-2">
-              "Amazing ROM! The endless customizations gave my Pixel a fresh feel! Cheers to the developers."
-            </p>
-            <div class="text-xs text-slate-400">- Sebastiana Carrington</div>
-          </div>
-
-          <div class="glass-card p-5 sm:p-6">
-            <div class="flex items-center justify-between mb-2">
-              <div class="text-amber-300 text-lg" aria-hidden="true">★★★★★</div>
-              <span class="text-[0.75rem] text-slate-400 uppercase tracking-[0.15em]">Daily driver</span>
-            </div>
-            <p class="text-sm text-slate-200 mb-2">
-              "Best ROM I've ever used. Everything works perfectly, including banking apps. The UI is beautiful and responsive."
-            </p>
-            <div class="text-xs text-slate-400">- Aditya Srivastava</div>
-          </div>
-
-          <div class="glass-card p-5 sm:p-6">
-            <div class="flex items-center justify-between mb-2">
-              <div class="text-amber-300 text-lg" aria-hidden="true">★★★★★</div>
-              <span class="text-[0.75rem] text-slate-400 uppercase tracking-[0.15em]">Power user</span>
-            </div>
-            <p class="text-sm text-slate-200 mb-2">
-              "I like the blend of customizations, features and the maintained Pixel touch. Also regular updates and great community support!"
-            </p>
-            <div class="text-xs text-slate-400">- Youssef Saleh</div>
-          </div>
-        </div>
-
-        <!-- Call to action -->
-        <div class="glass-panel p-6 sm:p-7 flex flex-col justify-between gap-5">
-          <div class="space-y-3">
-            <h3 class="text-xl font-semibold text-slate-50">Ready to flash Infinity X?</h3>
-            <p class="text-sm text-slate-300/90">
-              Download the latest build for your device, follow the install guide, and enjoy a cleaner, faster, and more personal Android experience.
-            </p>
-            <ul class="text-xs text-slate-400 space-y-1">
-              <li class="flex items-center gap-2">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                Verified builds for supported devices
-              </li>
-              <li class="flex items-center gap-2">
-                <span class="w-1.5 h-1.5 rounded-full bg-sky-400"></span>
-                OTA updates directly from the ROM
-              </li>
-              <li class="flex items-center gap-2">
-                <span class="w-1.5 h-1.5 rounded-full bg-fuchsia-400"></span>
-                Active support & changelogs
-              </li>
-            </ul>
-          </div>
-
-          <a href="https://projectinfinity-x.com/downloads"
-             class="inline-flex items-center justify-center w-full px-6 py-3 rounded-2xl bg-gradient-to-r from-cyan-500 via-sky-500 to-fuchsia-500 text-slate-950 font-semibold text-sm shadow-xl shadow-cyan-500/30 hover:shadow-fuchsia-500/30 transition-transform duration-200 hover:-translate-y-0.5">
-            <i class="fas fa-download mr-2"></i>
-            Download ROM
+        <div class="mt-6 flex flex-wrap items-center gap-4">
+          <a href="#download" class="btn btn-primary btn-lg glass gap-2">
+            <i class="fas fa-download"></i>
+            <span>Download Now</span>
+          </a>
+          <a href="#features" class="btn btn-ghost btn-lg border border-base-100/30 gap-2">
+            <i class="fas fa-star"></i>
+            <span>Explore Features</span>
           </a>
         </div>
+
+        <div class="mt-6 flex flex-wrap items-center gap-4 text-xs md:text-sm opacity-80">
+          <div class="flex items-center gap-2">
+            <span class="badge badge-success badge-xs"></span>
+            <span>Strong Play Integrity · All 3 checks green</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <span class="badge badge-outline badge-xs"></span>
+            <span>Banking apps fully functional</span>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer id="footer-placeholder"></footer>
+  <!-- ================ FEATURES ================= -->
+  <section id="features" class="py-16 lg:py-20">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl md:text-4xl font-bold bg-gradient-to-r from-cyan-400 to-violet-400 bg-clip-text text-transparent">
+          Blazing Features. Zero Compromises.
+        </h2>
+        <p class="mt-3 text-sm md:text-base opacity-80 max-w-2xl mx-auto">
+          Unlock the full potential of your device with a ROM that balances raw performance,
+          deep customization and daily reliability.
+        </p>
+      </div>
 
-  <!-- Scripts -->
-  <script src="assets/js/main.js" defer></script>
+      <div class="grid gap-6 md:gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <!-- Feature -->
+        <div class="card glass bg-base-100/5 border border-base-100/20 shadow-xl hover:translate-y-1 transition-all">
+          <div class="card-body">
+            <div class="flex items-center justify-between mb-3">
+              <span class="w-9 h-9 rounded-2xl bg-cyan-500/20 flex items-center justify-center">
+                <i class="fas fa-bolt text-cyan-300 text-lg"></i>
+              </span>
+              <span class="badge badge-outline badge-sm">Performance</span>
+            </div>
+            <h3 class="card-title text-base mb-2">Refined Performance</h3>
+            <p class="text-sm opacity-80">
+              System UI tweaks and kernel-level optimizations aimed to deliver
+              smoother animations, faster app launches and lower jank than stock OEM ROMs.
+            </p>
+          </div>
+        </div>
+
+        <div class="card glass bg-base-100/5 border border-base-100/20 shadow-xl hover:translate-y-1 transition-all">
+          <div class="card-body">
+            <div class="flex items-center justify-between mb-3">
+              <span class="w-9 h-9 rounded-2xl bg-fuchsia-500/20 flex items-center justify-center">
+                <i class="fas fa-palette text-fuchsia-300 text-lg"></i>
+              </span>
+              <span class="badge badge-outline badge-sm">Customization</span>
+            </div>
+            <h3 class="card-title text-base mb-2">Infinite Customization</h3>
+            <p class="text-sm opacity-80">
+              Tune every corner of your UI – status bar, lockscreen, gestures,
+              themes, icons, fonts and more – all without losing that polished Pixel-like feel.
+            </p>
+          </div>
+        </div>
+
+        <div class="card glass bg-base-100/5 border border-base-100/20 shadow-xl hover:translate-y-1 transition-all">
+          <div class="card-body">
+            <div class="flex items-center justify-between mb-3">
+              <span class="w-9 h-9 rounded-2xl bg-emerald-500/20 flex items-center justify-center">
+                <i class="fas fa-shield-alt text-emerald-300 text-lg"></i>
+              </span>
+              <span class="badge badge-outline badge-sm">Security</span>
+            </div>
+            <h3 class="card-title text-base mb-2">Enhanced Security</h3>
+            <p class="text-sm opacity-80">
+              Strong Play Integrity, in-built keybox and bootloader spoofing so
+              your banking & wallet apps work smoothly – no extra Magisk modules required.
+            </p>
+          </div>
+        </div>
+
+        <div class="card glass bg-base-100/5 border border-base-100/20 shadow-xl hover:translate-y-1 transition-all">
+          <div class="card-body">
+            <div class="flex items-center justify-between mb-3">
+              <span class="w-9 h-9 rounded-2xl bg-amber-500/20 flex items-center justify-center">
+                <i class="fas fa-magic text-amber-200 text-lg"></i>
+              </span>
+              <span class="badge badge-outline badge-sm">Smart</span>
+            </div>
+            <h3 class="card-title text-base mb-2">Smart Features</h3>
+            <p class="text-sm opacity-80">
+              Focused optimizations, adaptive battery profiles and intelligent RAM
+              management designed for gaming sessions and all-day use.
+            </p>
+          </div>
+        </div>
+
+        <div class="card glass bg-base-100/5 border border-base-100/20 shadow-xl hover:translate-y-1 transition-all">
+          <div class="card-body">
+            <div class="flex items-center justify-between mb-3">
+              <span class="w-9 h-9 rounded-2xl bg-sky-500/20 flex items-center justify-center">
+                <i class="fas fa-sync-alt text-sky-300 text-lg"></i>
+              </span>
+              <span class="badge badge-outline badge-sm">OTA</span>
+            </div>
+            <h3 class="card-title text-base mb-2">Regular OTA Updates</h3>
+            <p class="text-sm opacity-80">
+              Stay protected and ahead with monthly Android security patches,
+              fresh features and under-the-hood improvements delivered via OTA.
+            </p>
+          </div>
+        </div>
+
+        <div class="card glass bg-base-100/5 border border-base-100/20 shadow-xl hover:translate-y-1 transition-all">
+          <div class="card-body">
+            <div class="flex items-center justify-between mb-3">
+              <span class="w-9 h-9 rounded-2xl bg-purple-500/20 flex items-center justify-center">
+                <i class="fas fa-headset text-purple-200 text-lg"></i>
+              </span>
+              <span class="badge badge-outline badge-sm">Community</span>
+            </div>
+            <h3 class="card-title text-base mb-2">Active Community</h3>
+            <p class="text-sm opacity-80">
+              Join our Telegram groups and forums for support, device requests,
+              changelog discussions and sneak peeks of what's coming next.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== SCREENSHOTS (Glass Carousel) ============== -->
+  <section id="screenshots" class="py-16 bg-base-100/5">
+    <div class="container mx-auto px-4 max-w-5xl">
+      <div class="text-center mb-10">
+        <h2 class="text-3xl md:text-4xl font-bold bg-gradient-to-r from-sky-400 to-emerald-400 bg-clip-text text-transparent">
+          Screenshots
+        </h2>
+        <p class="mt-3 text-sm md:text-base opacity-80 max-w-2xl mx-auto">
+          Preview the clean, modern and fluid Infinity X interface before you flash.
+        </p>
+      </div>
+
+      <div class="glass bg-base-100/5 border border-base-100/20 rounded-3xl p-4 md:p-6 backdrop-blur-xl">
+        <div class="carousel w-full rounded-2xl">
+          <!-- You can duplicate items and change srcs -->
+          <div id="ss1" class="carousel-item w-full justify-center">
+            <img src="assets/images/ss-1.webp" alt="Infinity X Screenshot 1" class="rounded-2xl max-h-[520px] object-contain" loading="lazy">
+          </div>
+          <div id="ss2" class="carousel-item w-full justify-center">
+            <img src="assets/images/ss-2.webp" alt="Infinity X Screenshot 2" class="rounded-2xl max-h-[520px] object-contain" loading="lazy">
+          </div>
+          <div id="ss3" class="carousel-item w-full justify-center">
+            <img src="assets/images/ss-3.webp" alt="Infinity X Screenshot 3" class="rounded-2xl max-h-[520px] object-contain" loading="lazy">
+          </div>
+        </div>
+
+        <div class="flex justify-center gap-2 mt-4">
+          <a href="#ss1" class="btn btn-xs btn-circle">1</a>
+          <a href="#ss2" class="btn btn-xs btn-circle">2</a>
+          <a href="#ss3" class="btn btn-xs btn-circle">3</a>
+        </div>
+
+        <div class="mt-4 flex items-center justify-center gap-2 text-xs opacity-80">
+          <i class="fas fa-arrows-alt-h"></i>
+          <span>Swipe or click bullets to browse more screenshots</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============== DOWNLOAD & FEEDBACK ============== -->
+  <section id="download" class="py-16 lg:py-20">
+    <div class="container mx-auto px-4 max-w-6xl">
+      <div class="grid gap-10 lg:grid-cols-[1.2fr,0.9fr] items-start">
+        <!-- Feedback / testimonials -->
+        <div>
+          <h2 class="text-3xl md:text-4xl font-bold bg-gradient-to-r from-cyan-400 to-fuchsia-400 bg-clip-text text-transparent mb-4">
+            Download Infinity X
+          </h2>
+          <p class="text-sm md:text-base opacity-80 mb-6 max-w-xl">
+            Join a growing community of users who switched from bloated OEM ROMs
+            to a clean, fast and visually stunning Android experience.
+          </p>
+
+          <div class="grid gap-4 md:grid-cols-3">
+            <div class="card glass bg-base-100/5 border border-base-100/20">
+              <div class="card-body p-4">
+                <div class="rating rating-xs mb-1">
+                  <input type="radio" class="mask mask-star-2 bg-amber-400" checked />
+                  <input type="radio" class="mask mask-star-2 bg-amber-400" />
+                  <input type="radio" class="mask mask-star-2 bg-amber-400" />
+                  <input type="radio" class="mask mask-star-2 bg-amber-400" />
+                  <input type="radio" class="mask mask-star-2 bg-amber-400" />
+                </div>
+                <p class="text-xs opacity-80 mb-2">
+                  “Amazing ROM! The endless customizations gave my Pixel a fresh feel.
+                  Cheers to the developers.”
+                </p>
+                <p class="text-[0.7rem] opacity-70">– Sebastiana Carrington</p>
+              </div>
+            </div>
+
+            <div class="card glass bg-base-100/5 border border-base-100/20">
+              <div class="card-body p-4">
+                <div class="rating rating-xs mb-1">
+                  <input type="radio" class="mask mask-star-2 bg-amber-400" checked />
+                  <input type="radio" class="mask mask-star-2 bg-amber-400" />
+                  <input type="radio" class="mask mask-star-2 bg-amber-400" />
+                  <input type="radio" class="mask mask-star-2 bg-amber-400" />
+                  <input type="radio" class="mask mask-star-2 bg-amber-400" />
+                </div>
+                <p class="text-xs opacity-80 mb-2">
+                  “Best ROM I’ve ever used. Everything works perfectly, including banking apps.
+                  The UI is beautiful and responsive.”
+                </p>
+                <p class="text-[0.7rem] opacity-70">– Aditya Srivastava</p>
+              </div>
+            </div>
+
+            <div class="card glass bg-base-100/5 border border-base-100/20">
+              <div class="card-body p-4">
+                <div class="rating rating-xs mb-1">
+                  <input type="radio" class="mask mask-star-2 bg-amber-400" checked />
+                  <input type="radio" class="mask mask-star-2 bg-amber-400" />
+                  <input type="radio" class="mask mask-star-2 bg-amber-400" />
+                  <input type="radio" class="mask mask-star-2 bg-amber-400" />
+                  <input type="radio" class="mask mask-star-2 bg-amber-400" />
+                </div>
+                <p class="text-xs opacity-80 mb-2">
+                  “Love the balance between features, stability and Pixel vibes.
+                  Updates are frequent and community support is great.”
+                </p>
+                <p class="text-[0.7rem] opacity-70">– Youssef Saleh</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Download Card -->
+        <div class="card glass bg-base-100/10 border border-primary/40 shadow-2xl backdrop-blur-xl">
+          <div class="card-body gap-4">
+            <div class="flex items-center justify-between">
+              <h3 class="card-title text-lg">Get the ROM</h3>
+              <span class="badge badge-primary gap-1">
+                <i class="fas fa-android text-xs"></i>
+                <span>Android 14</span>
+              </span>
+            </div>
+
+            <p class="text-sm opacity-80">
+              Download Infinity X builds for your device from the official
+              project page. Make sure to follow the install instructions and
+              backup your data beforehand.
+            </p>
+
+            <div class="space-y-2 text-xs opacity-80">
+              <div class="flex justify-between">
+                <span>Available devices</span>
+                <span>Pixel · Xiaomi · More</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Release channel</span>
+                <span>Stable &amp; Beta</span>
+              </div>
+              <div class="flex justify-between">
+                <span>Update method</span>
+                <span>OTA / Clean flash</span>
+              </div>
+            </div>
+
+            <div class="mt-2">
+              <a href="https://projectinfinity-x.com/downloads" class="btn btn-primary btn-block gap-2">
+                <i class="fas fa-download"></i>
+                <span>Go to Downloads</span>
+              </a>
+            </div>
+
+            <div class="mt-1 text-[0.7rem] opacity-70">
+              By downloading you agree to follow device-specific instructions from the maintainers.
+              Flash responsibly.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER PLACEHOLDER (for templating.js) -->
+  <footer id="footer-placeholder" class="mt-4"></footer>
+
+  <!-- Keep your existing JS if you still needه -->
+  <script src="https://kit.fontawesome.com/a2e0e6ad65.js" crossorigin="anonymous"></script>
   <script src="/assets/js/templating.js" defer></script>
 </body>
-
 </html>
